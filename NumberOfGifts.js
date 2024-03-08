@@ -20,15 +20,16 @@
 
 // --------------------- SOLUTION ------------------------------
 function howManyGifts(maxBudget, gifts){
-  let sumOfAllGifts = 0
-  let giftsToBuy = []
+  gifts = gifts.sort((a,b) => a - b)
   
-  for(let i = 0; i < gifts.length; i++) {
-    let gift = gifts[i];
-    sumOfAllGifts = gift + gifts[i];
-    if (maxBudget >= sumOfAllGifts) {
-      giftsToBuy.push(gift);
+  let giftsTobuy = []
+  let sumOfGifts = 0;
+  
+  for (let i = 0; i < gifts.length; i++) {  
+    if ((sumOfGifts += gifts[i]) <= maxBudget) {   
+      giftsTobuy.push(gifts[i])
     }
   }
-  return giftsToBuy.length
+
+  return giftsTobuy.length
 }
